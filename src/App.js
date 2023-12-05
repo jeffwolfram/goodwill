@@ -1,7 +1,19 @@
 import React, { useState } from 'react';
-import './App.css'; 
+import './App.css';
+
+ 
+  
+
+
+
 
 const App = () => {
+  const employeeList = ["Jeff Wolfram", "Jacob E", "Jacob F", "Justin", "Tundra"];
+  const [selectedName, setSelectedName] = useState('');
+  const handleSelectChange = (e) => {
+    setSelectedName(e.target.value);
+    
+  };
   const [buttonData, setButtonData] = useState([
     { name: 'Speakers', broken: 0, ready: 0 },
     { name: 'Soundbar', broken: 0, ready: 0 },
@@ -50,9 +62,29 @@ const App = () => {
   };
 
   return (
+
     <div className="app-container">
       <div className="button-container">
-        <h2>Buttons:</h2>
+        <h2>Testing</h2>
+
+        <div>
+          {selectedName ? (
+            <p>Tester: {selectedName}</p>
+          ) : (
+            <>
+              <label>Employee Name:</label>
+              <select value={selectedName} onChange={handleSelectChange}>
+                <option value="">Employee Name</option>
+                {employeeList.map((name, index) => (
+                  <option key={index} value={name}>
+                    {name}
+                  </option>
+                ))}
+              </select>
+            </>
+          )}
+        </div>
+
         {buttonData.map((button, index) => (
           <div key={index} className="item-container">
             <span className="item-name">{button.name}</span>
