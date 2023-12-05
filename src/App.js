@@ -23,6 +23,7 @@ const App = () => {
     { name: 'Video Game', broken: 0, ready: 0 },
     { name: 'AV Player', broken: 0, ready: 0 },
     { name: 'IOT', broken: 0, ready: 0 },
+    {name: 'Apple TV', broken: 0, ready: 0},
   ]);
 
   const [totalBroken, setTotalBroken] = useState(0);
@@ -73,7 +74,11 @@ const App = () => {
           ) : (
             <>
               <label>Employee Name:</label>
-              <select value={selectedName} onChange={handleSelectChange}>
+              <select 
+              value={selectedName} 
+              onChange={handleSelectChange}
+              style={{ marginBottom: '20px' }} 
+              >
                 <option value="">Employee Name</option>
                 {employeeList.map((name, index) => (
                   <option key={index} value={name}>
